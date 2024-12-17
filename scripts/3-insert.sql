@@ -14,6 +14,6 @@
 --   ('Steph', 'Curry', 'curry@jstack.com')
 -- ;
 
-INSERT INTO customers(first_name, last_name, email)
-VALUES ('Michael', 'Jordan', 'jordan@jstack.com')
-RETURNING id, created_at;
+-- INSERT INTO customers(first_name, last_name, email)
+-- VALUES ('Michael', 'Jordan', 'jordan@jstack.com')
+-- RETURNING id, created_at;
