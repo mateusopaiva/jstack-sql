@@ -5,4 +5,4 @@
 --FROM customers;
 
 SELECT *
-FROM customers;
+FROM orders;

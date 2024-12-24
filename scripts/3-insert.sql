@@ -1,19 +1,22 @@
 \c live023
 
---INSERT INTO customers 
---VALUES( DEFAULT, 'Mateus', 'Paiva', DEFAULT, 'mateus@jstack.com');
+DO $$
+DECLARE
+  i INT := 1;
+  customer_id INT;
+  created_customers INT := 0;
+BEGIN
+  WHILE i <= 20 LOOP
+    INSERT INTO customers(first_name, last_name, email)
+    VALUES('Customer-' || i, 'Doe-' || i, 'customer.'|| i || '@email.com')
+    RETURNING id INTO customer_id;
 
---INSERT INTO customers(email, first_name, last_name)
---VALUES('cristiano@jstack.com', 'Cristiano', 'Ronaldo');
+    INSERT INTO orders(amount, customer_id)
+    VALUES(RANDOM() * 1000, customer_id);
 
--- INSERT INTO customers(first_name, last_name, email)
--- VALUES
---   ('LeBron', 'James', 'lebron@jstack.com'),
---   ('Lionel', 'Messi', 'messi@jstack.com'),
---   ('Neymar', 'Jr', 'neymar@jstack.com'),
---   ('Steph', 'Curry', 'curry@jstack.com')
--- ;
+    i := i + 1;
+    created_customers := created_customers+1;
+  END LOOP;
 
--- INSERT INTO customers(first_name, last_name, email)
--- VALUES ('Michael', 'Jordan', 'jordan@jstack.com')
--- RETURNING id, created_at;
+  RAISE NOTICE '% customers succesfully created', created_customers;
+END $$;
