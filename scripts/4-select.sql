@@ -2,6 +2,7 @@
 
 SELECT *
 FROM customers
+ORDER BY id
 -- WHERE id = 10
 -- WHERE first_name = 'customer-2
 -- WHERE first_name != 'customer-2
