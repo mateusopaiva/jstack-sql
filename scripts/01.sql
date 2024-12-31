@@ -1,4 +1,5 @@
 \c live024
 
-SELECT *
-FROM customers;
+SELECT id, CONCAT(first_name, ' ', last_name) AS "fullName"
+FROM customers
+;
