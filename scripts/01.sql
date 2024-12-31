@@ -1,5 +1,7 @@
 \c live024
 
-SELECT id, CONCAT(first_name, ' ', last_name) AS "fullName"
+-- INSERT INTO customers(first_name) VALUES ('Mateus');
+
+SELECT COUNT(id) AS total_of_customers
 FROM customers
 ;
