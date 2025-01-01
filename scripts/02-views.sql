@@ -2,20 +2,20 @@
 
 DROP VIEW IF EXISTS customers_summary;
 
---CREATE VIEW customers_summary AS 
---  SELECT
---    customer_id,
---    COUNT(id) AS total_orders,
---    SUM(amount) AS total_revenue,
---    MAX(amount) AS max_order,
---    MIN(amount) AS min_order,
---    ROUND(AVG(amount), 2) AS average_ticket
---  FROM orders
---  GROUP BY customer_id
---  ORDER BY customer_id
---;
+CREATE OR REPLACE VIEW customers_summary AS 
+  SELECT
+    customer_id AS "customerID",
+    COUNT(id) AS "totalOrders",
+    SUM(amount) AS "totalRevenue",
+    MAX(amount) AS "maxOrder",
+    MIN(amount) AS "minOrder",
+    ROUND(AVG(amount), 2) AS "averageTicket"
+  FROM orders
+  GROUP BY customer_id
+  ORDER BY "totalOrders"
+;
 
---INSERT INTO orders(customer_id, amount) VALUES(4, 1000);
+-- ALTER VIEW customers_summary RENAME COLUMN total_orders TO "totalOrders";
 
 --SELECT * 
 --FROM customers_summary
@@ -23,7 +23,7 @@ DROP VIEW IF EXISTS customers_summary;
 --ORDER BY total_revenue DESC
 --;
 
-SELECT * 
-FROM pg_views
-WHERE viewname = 'customers_summary';
-;
+--SELECT * 
+--FROM pg_views
+--WHERE viewname = 'customers_summary';
+--;
