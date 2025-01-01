@@ -1,5 +1,7 @@
 \c live024
 
+DROP VIEW IF EXISTS customers_summary;
+
 --CREATE VIEW customers_summary AS 
 --  SELECT
 --    customer_id,
@@ -15,8 +17,13 @@
 
 --INSERT INTO orders(customer_id, amount) VALUES(4, 1000);
 
-SELECT * 
-FROM customers_summary
+--SELECT * 
+--FROM customers_summary
 --WHERE total_revenue BETWEEN 500 AND 1000
-ORDER BY total_revenue DESC
+--ORDER BY total_revenue DESC
+--;
+
+SELECT * 
+FROM pg_views
+WHERE viewname = 'customers_summary';
 ;
