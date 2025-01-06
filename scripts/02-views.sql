@@ -5,11 +5,11 @@ DROP VIEW IF EXISTS customers_summary;
 CREATE OR REPLACE VIEW customers_summary AS 
   SELECT
     customer_id AS "customerID",
-    COUNT(id) AS "totalOrders",
-    SUM(amount) AS "totalRevenue",
-    MAX(amount) AS "maxOrder",
-    MIN(amount) AS "minOrder",
-    ROUND(AVG(amount), 2) AS "averageTicket"
+    COUNT(id)::INT AS "totalOrders",
+    SUM(amount)::FLOAT AS "totalRevenue",
+    MAX(amount)::FLOAT AS "maxOrder",
+    MIN(amount)::FLOAT AS "minOrder",
+    ROUND(AVG(amount), 2)::FLOAT AS "averageTicket"
   FROM orders
   GROUP BY customer_id
   ORDER BY "totalOrders"
